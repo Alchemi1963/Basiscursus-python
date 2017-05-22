@@ -13,34 +13,34 @@ cijferlijst = [] #Maak de lijst
 
 while True: #Zorg dat dit blijft draaien
 	clear() #leeg het scherm
-	start = int(input('Wat wil je doen?\n\
+	start = input('Wat wil je doen?\n\
 	\t1) Een cijfer toevoegen\n\
 	\t2) Een cijfer verwijderen\n\
 	\t3) Je cijferlijst zien\n\
 	\t4) Je gemiddelde cijfer zien\n\
 	\t5) Je hoogste en laatste cijfer zien\n\
-	\t6) De lijst leeg maken\n')) #Laat de gebruiker een keuze maken
+	\t6) De lijst leeg maken\n') #Laat de gebruiker een keuze maken
 	clear() #Leeg het scherm
 
 	#De opties
-	if start == 1:
+	if start == '1':
 		cijfer = input('Wat is het cijfer?\n') #Vraag naar het nieuwe cijfer
 		cijferlijst.append(cijfer) #Voeg dat toe aan de lijst
 		continue #Terug naar het begin
 
-	elif start == 2:
+	elif start == '2':
 		print('\n'.join(cijferlijst)) #Print de lijst mooi (zie de tip)
 		cijferx = input('Welk cijfer wil je verwijderen?\n') #Vraag welk cijfer de gebruiker wil verwijderen
 		if cijferx in cijferlijst: #Check of dat cijfer wel in de lijst zit
 			cijferlijst.remove(cijferx) #Haal dat cijfer weg
 		continue #Terug naar het begin
 
-	elif start == 3:
+	elif start == '3':
 		print('\n'.join(cijferlijst)) #Print de lijst mooi (zie de tip)
 		input('Druk op ENTER om door te gaan...') #Zorg ervoor dat de code niet meteen doorgaat
 		continue #Terug naar het begin
 
-	elif start == 4:
+	elif start == '4':
 		i = 0
 		gemiddelde = 0
 
@@ -53,7 +53,7 @@ while True: #Zorg dat dit blijft draaien
 		input('Druk op ENTER om door te gaan...')
 		continue #Terug naar het begin
 
-	elif start == 5:
+	elif start == '5':
 		hoog = cijferlijst[0] #Hoogste cijfer is eerste cijfer
 		laag = cijferlijst[0] #Laagstse cijfer is eerste cijfer
 		i = 0
@@ -71,6 +71,11 @@ while True: #Zorg dat dit blijft draaien
 		input('Druk op ENTER om door te gaan...')
 		continue #Terug naar het begin
 
-	elif start == 6:
+	elif start == '6':
 		cijferlijst = [] #Sla de cijerlijst opnieuw op als een lege lijst
+		continue #Terug naar het begin
+	
+	else:
+		print('Dit is geen optie...')
+		input('Druk op ENTER om verder te gaan...')
 		continue #Terug naar het begin
