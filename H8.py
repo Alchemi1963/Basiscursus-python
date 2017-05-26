@@ -1,6 +1,6 @@
 ##Opdracht:
 ##Maak de opdracht van H7 opnieuw, maar dit keer met functies.
-##En zorg er ook voor dat je kan stoppen, meerdere cijfers in een keer kan doen (toevoegen en verwijderen).
+##En zorg er ook voor dat je kan stoppen & meerdere cijfers in een keer kan toevoegen.
 
 import os
 
@@ -21,18 +21,22 @@ def nieuwCijfer(cijferlijst):
 			cijferlijst.append(int(cijfer2))
 		else:
 			break
-	
+
 	return cijferlijst
 
 def printCijfers(cijferlijst):
 	for cijfer in cijferlijst:
 		print(cijfer)
-	
+	ENTER()
+
+	return cijferlijst
+
 def xCijfer(cijferlijst):
 	print('Welk cijfer wil je verwijderen?')
-	printCijfers(cijferlijst)
+	for cijfer in cijferlijst:
+		print(cijfer)
 	cijfer = int(input())
-	
+
 	if cijfer in cijferlijst:
 		print('Je',cijfer,'is verwijderd')
 		cijferlijst.remove(int(cijfer))
@@ -40,7 +44,7 @@ def xCijfer(cijferlijst):
 	else:
 		print('Er zit geen',cijfer,'in je cijferlijst')
 		ENTER()
-	
+
 	return cijferlijst
 
 
@@ -49,7 +53,10 @@ def gemCijfer(cijferlijst):
 	for cijfer in cijferlijst:
 		gemiddeld += cijfer
 	gemiddeld /= len(cijferlijst)
-	return gemiddeld
+	print(gemiddeld)
+	ENTER()
+
+	return cijferlijst
 
 def hoogLaagCijfer(cijferlijst):
 	hoog = cijferlijst[0]
@@ -59,13 +66,18 @@ def hoogLaagCijfer(cijferlijst):
 			hoog = cijfer
 		elif cijfer < laag:
 			laag = cijfer
-	return hoog, laag
+	print(hoog, laag)
+	ENTER()
+	return cijferlijst
 
-def leegLijst():
+def leegLijst(cijferlijst):
 	cijferlijst = []
 	return cijferlijst
 
-functies = [[nieuwCijfer, 'Voeg cijfers toe'], [xCijfer, 'Verwijder cijfers'], [printCijfers, 'Bekijk je cijfers'], [gemCijfer, 'Bekijk je gemiddelde'], [hoogLaagCijfer, 'Bekijk je hoogste en je laagste cijfer'], [leegLijst, 'Leeg je cijferlijst'], ['break', 'Stop het programma']]
+def stop(cijferlijst):
+	exit()
+
+functies = [[nieuwCijfer, 'Voeg cijfers toe'], [xCijfer, 'Verwijder een cijfer'], [printCijfers, 'Bekijk je cijfers'], [gemCijfer, 'Bekijk je gemiddelde'], [hoogLaagCijfer, 'Bekijk je hoogste en je laagste cijfer'], [leegLijst, 'Leeg je cijferlijst'], [stop, 'Stop het programma']]
 
 def ENTER():
 	input('Druk op ENTER om verder te gaan...')
@@ -78,9 +90,8 @@ def start():
 		for functie in functies:
 			print(functies.index(functie) ,functie[1])
 		actie = input()
-		
-		functies[int(actie)][0](cijfers)
-		
+		clear()
+		cijfers = functies[int(actie)][0](cijfers)
 		clear()
 
 start()
